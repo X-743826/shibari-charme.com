@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>François — Shibari Charme</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .portrait-frame {
+      width: 180px; height: 180px;
+      border: 1px solid var(--bordure);
+      border-radius: 50%;
+      margin: 0 auto 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .portrait-frame::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 1px solid rgba(200,169,110,0.15);
+    }
+
+    .portrait-frame::after {
+      content: '';
+      position: absolute;
+      inset: -16px;
+      border-radius: 50%;
+      border: 1px solid rgba(200,169,110,0.07);
+    }
+
+    .portrait-kanji {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 5rem;
+      font-weight: 200;
+      color: var(--or-profond);
+      opacity: 0.5;
+    }
+
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--bordure);
+      border: 1px solid var(--bordure);
+      margin: 3rem 0;
+    }
+
+    .philosophy-item {
+      background: var(--noir-doux);
+      padding: 2rem;
+    }
+
+    .philosophy-item .label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--or-profond);
+      margin-bottom: 0.8rem;
+    }
+
+    .philosophy-item p {
+      font-size: 0.95rem !important;
+      margin: 0 !important;
+      text-align: left !important;
+    }
+
+    .philosophy-item p::first-letter {
+      all: unset;
+      font-size: 0.95rem;
+    }
+
+    .signature-block {
+      text-align: center;
+      padding: 3rem 2rem;
+      margin-top: 3rem;
+      border-top: 1px solid var(--bordure);
+    }
+
+    .signature-block .name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      letter-spacing: 0.2em;
+      color: var(--or-pale);
+      margin-bottom: 0.5rem;
+    }
+
+    .signature-block .role {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 0.85rem;
+      font-weight: 200;
+      letter-spacing: 0.4em;
+      color: var(--or-profond);
+    }
+
+    @media (max-width: 600px) {
+      .philosophy-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Shibari Charme</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="histoire.html">Histoire</a></li>
+      <li><a href="historique.html">Historique</a></li>
+      <li><a href="francois.html" class="active">François</a></li>
+      <li><a href="biographie.html">Biographie</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-wrapper">
+
+  <header class="hero">
+    <div class="hero-kanji">師</div>
+    <h1 class="hero-title">François Xees</h1>
+    <p class="hero-subtitle">Nawashi — Passionné des cordes &amp; de photographie</p>
+  </header>
+
+  <div class="content-wrapper fade-in">
+
+    <div class="portrait-frame">
+      <span class="portrait-kanji">縛</span>
+    </div>
+
+    <div class="quote-block">
+      Ma recherche : jouer avec les cordes et les courbes du corps humain.
+      Mettre en contraste la peau lisse, les textures des cordes.
+      Au même titre qu'une peinture, la toile est le modèle
+      et les cordes le pinceau.
+    </div>
+
+    <p>
+      Au-delà du tableau créé, chercher à faire ressortir les émotions ainsi que la sensualité
+      ou encore la fragilité. Selon la position des cordes et des nœuds, le corps du modèle est
+      stimulé, d'une façon similaire aux techniques d'acupuncture et de Shiatsu.
+    </p>
+
+    <p>
+      En plus de créer un tableau, certaines conditions physiologiques sont souvent réunies,
+      que l'on appelle le <em>fond</em> pour les endorphines et le <em>top</em> pour l'adrénaline.
+      Parfois la séance de Kinbaku/Shibari, l'ambiance, permettent au modèle de ressentir ces
+      effets et la plongent dans un délicieux état d'euphorie.
+    </p>
+
+    <div class="rope-divider"><span class="rope-knot">✦</span></div>
+
+    <p class="section-title">Ma philosophie</p>
+
+    <div class="philosophy-grid">
+      <div class="philosophy-item">
+        <div class="label">Créativité</div>
+        <p>Passionné de cordes et de photographie depuis de nombreuses années, j'aime avoir l'esprit libre pour que ma créativité s'exprime pleinement.</p>
+      </div>
+      <div class="philosophy-item">
+        <div class="label">Partage</div>
+        <p>Vivre le partage d'émotions, de sensations avec les modèles pour qu'un beau moment s'écrive — c'est là l'essence de ma pratique.</p>
+      </div>
+      <div class="philosophy-item">
+        <div class="label">Progression</div>
+        <p>Je me définis comme un éternel amateur, avide de progression et de découverte. Je ressens le besoin d'apprendre sans cesse pour affiner ma technique.</p>
+      </div>
+      <div class="philosophy-item">
+        <div class="label">Passion</div>
+        <p>Je suis amoureux de cet Art simplement. Homme de caractère appréciant la prise de pouvoir, j'aime le corps, sa sensualité et son langage à travers les émotions.</p>
+      </div>
+    </div>
+
+    <p>
+      Mon bonheur : vivre de beaux moments intenses, chargés d'émotions.
+    </p>
+
+    <div class="signature-block">
+      <div class="name">François Xees</div>
+      <div class="role">縛師 &nbsp;·&nbsp; Nawashi &nbsp;·&nbsp; Praticien des cordes</div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  <p>© Shibari Charme &nbsp;·&nbsp; Tous droits réservés &nbsp;·&nbsp; François Xees</p>
+</footer>
+
+</body>
+</html>

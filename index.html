@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shibari Charme — L'art du Kinbaku</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── PAGE SPÉCIFIQUE ── */
+    .home-hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 5rem;
+      position: relative;
+    }
+
+    /* Lignes de corde décoratives */
+    .home-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 60px,
+          rgba(200,169,110,0.018) 60px,
+          rgba(200,169,110,0.018) 61px
+        );
+      pointer-events: none;
+    }
+
+    .home-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 5%; right: 5%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--bordure), transparent);
+    }
+
+    .kanji-bg {
+      position: absolute;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 22rem;
+      font-weight: 200;
+      color: rgba(200,169,110,0.03);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      letter-spacing: 0.3em;
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .brand-name {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      color: var(--or-pale);
+      line-height: 1.1;
+      animation: fadeDown 1.4s ease both;
+    }
+
+    .brand-name span {
+      display: block;
+      color: var(--or);
+    }
+
+    .brand-tagline {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 0.9rem;
+      font-weight: 200;
+      letter-spacing: 0.5em;
+      color: var(--or-profond);
+      margin-top: 0.8rem;
+      text-transform: uppercase;
+      animation: fadeDown 1.4s 0.2s ease both;
+    }
+
+    .rope-ornament {
+      margin: 3rem auto;
+      width: 200px;
+      height: 2px;
+      position: relative;
+      animation: fadeIn 1.8s 0.5s ease both;
+    }
+
+    .rope-ornament::before,
+    .rope-ornament::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      height: 2px;
+      width: 45%;
+      background: linear-gradient(90deg, transparent, var(--or-profond));
+    }
+    .rope-ornament::after {
+      right: 0;
+      background: linear-gradient(270deg, transparent, var(--or-profond));
+    }
+
+    .rope-ornament-center {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 8px; height: 8px;
+      border: 1px solid var(--or);
+      border-radius: 50%;
+      background: transparent;
+    }
+
+    .intro-text {
+      max-width: 680px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 2;
+      color: var(--texte);
+      text-align: center;
+      animation: fadeIn 1.8s 0.7s ease both;
+    }
+
+    .nav-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1px;
+      max-width: 900px;
+      margin: 5rem auto 0;
+      background: var(--bordure);
+      border: 1px solid var(--bordure);
+      animation: fadeIn 1.8s 1s ease both;
+    }
+
+    .nav-card {
+      background: var(--noir-doux);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .nav-card:hover {
+      background: rgba(200, 169, 110, 0.07);
+    }
+
+    .nav-card-kanji {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 2rem;
+      font-weight: 200;
+      color: var(--or-profond);
+      opacity: 0.6;
+    }
+
+    .nav-card-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--or-pale);
+    }
+
+    .nav-card-desc {
+      font-size: 0.85rem;
+      font-style: italic;
+      color: var(--texte);
+      opacity: 0.7;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      animation: fadeIn 2s 1.5s ease both;
+    }
+
+    .scroll-hint span {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      color: var(--or-profond);
+      text-transform: uppercase;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(180deg, var(--or-profond), transparent);
+      animation: scrollPulse 2s 2s infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.2); }
+    }
+
+    /* Section présentation */
+    .presentation {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 7rem 2rem 6rem;
+      text-align: center;
+    }
+
+    .presentation .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--or-profond);
+      margin-bottom: 2rem;
+    }
+
+    .presentation blockquote {
+      font-size: 1.25rem;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 2;
+      color: var(--texte-clair);
+      border: none;
+      padding: 0;
+    }
+
+    .presentation blockquote em {
+      color: var(--or-pale);
+      font-style: normal;
+    }
+
+    .signature {
+      margin-top: 3rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: var(--or);
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Shibari Charme</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Accueil</a></li>
+      <li><a href="histoire.html">Histoire</a></li>
+      <li><a href="historique.html">Historique</a></li>
+      <li><a href="francois.html">François</a></li>
+      <li><a href="biographie.html">Biographie</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-wrapper">
+
+  <section class="home-hero">
+    <div class="kanji-bg">縛</div>
+
+    <h1 class="brand-name">
+      Shibari
+      <span>Charme</span>
+    </h1>
+
+    <p class="brand-tagline">縛り &nbsp;·&nbsp; 魅力 &nbsp;·&nbsp; Kinbaku</p>
+
+    <div class="rope-ornament">
+      <div class="rope-ornament-center"></div>
+    </div>
+
+    <p class="intro-text">
+      Cordes, femmes, charme, le Kinbaku — Shibari.<br>
+      Ma vision n'est guidée que par ma passion.<br>
+      L'envie de partager a donné naissance à ce site dédié à ma passion, ma vision.<br>
+      Je vous souhaite une excellente visite que vous soyez amateur ou simple curieux,<br>
+      peut-être tombé par hasard dans cet univers,<br>
+      <em style="color:var(--or-pale)">j'espère que ce que vous y verrez vous touchera…</em><br>
+      au point de revenir.
+    </p>
+
+    <div class="scroll-hint">
+      <span>Explorer</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Cartes de navigation -->
+  <section style="max-width:900px; margin:0 auto; padding:0 2rem;">
+    <nav class="nav-cards" aria-label="Navigation principale">
+      <a href="histoire.html" class="nav-card">
+        <div class="nav-card-kanji">史</div>
+        <div class="nav-card-label">Histoire</div>
+        <div class="nav-card-desc">Origines &amp; culture</div>
+      </a>
+      <a href="historique.html" class="nav-card">
+        <div class="nav-card-kanji">術</div>
+        <div class="nav-card-label">Historique</div>
+        <div class="nav-card-desc">L'art &amp; les précautions</div>
+      </a>
+      <a href="francois.html" class="nav-card">
+        <div class="nav-card-kanji">師</div>
+        <div class="nav-card-label">François</div>
+        <div class="nav-card-desc">Vision &amp; philosophie</div>
+      </a>
+      <a href="biographie.html" class="nav-card">
+        <div class="nav-card-kanji">道</div>
+        <div class="nav-card-label">Biographie</div>
+        <div class="nav-card-desc">Un parcours, une passion</div>
+      </a>
+    </nav>
+  </section>
+
+  <!-- Présentation -->
+  <section class="presentation fade-in">
+    <p class="section-label">Votre communauté Shibari</p>
+
+    <div class="rope-divider">
+      <span class="rope-knot">✦</span>
+    </div>
+
+    <blockquote>
+      Le Kinbaku est <em>l'art du bondage japonais</em>, mêlant servitude, domination,
+      spiritualité, philosophie, érotisme, sensualité et, de nos jours en Occident,
+      esthétisme. Les cordes deviennent synonymes d'érotisme et d'esthétisme,
+      lorsqu'elles entravent le corps féminin, <em>l'enveloppant de beauté,
+      de sensualité, de plaisir cérébral</em> et de stimulation.
+    </blockquote>
+
+    <div class="rope-divider">
+      <span class="rope-knot">✦</span>
+    </div>
+
+    <p class="signature">François Xees &nbsp;·&nbsp; Nawashi</p>
+  </section>
+
+</div>
+
+<footer>
+  <p>© Shibari Charme &nbsp;·&nbsp; Tous droits réservés &nbsp;·&nbsp; François Xees</p>
+</footer>
+
+</body>
+</html>

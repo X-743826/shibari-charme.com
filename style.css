@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+JP:wght@200;300;400&family=Cinzel:wght@400;600&display=swap');
+
+:root {
+  --noir: #0a0805;
+  --noir-doux: #121008;
+  --brun-sombre: #1a1208;
+  --or: #c8a96e;
+  --or-pale: #e8d4a8;
+  --or-profond: #8a6a2e;
+  --creme: #f0e8d8;
+  --creme-pale: #faf6f0;
+  --rouge-bordeaux: #5a1a1a;
+  --texte: #d4c4a8;
+  --texte-clair: #e8dcc8;
+  --bordure: rgba(200, 169, 110, 0.25);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--noir);
+  color: var(--texte);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.85;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Texture de fond */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(90, 26, 26, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(200, 169, 110, 0.05) 0%, transparent 50%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── NAVIGATION ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: linear-gradient(180deg, rgba(10,8,5,0.98) 0%, rgba(10,8,5,0.85) 100%);
+  border-bottom: 1px solid var(--bordure);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.nav-logo {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  color: var(--or);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.nav-logo:hover { color: var(--or-pale); }
+
+.nav-links {
+  display: flex;
+  gap: 2.2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--texte);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0; right: 0;
+  height: 1px;
+  background: var(--or);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+.nav-links a:hover { color: var(--or-pale); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-links a.active { color: var(--or); }
+.nav-links a.active::after { transform: scaleX(1); }
+
+/* ── ORNEMENT CORDE ── */
+.rope-divider {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+.rope-divider::before,
+.rope-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--or-profond), transparent);
+}
+
+.rope-knot {
+  color: var(--or);
+  font-size: 1.2rem;
+  opacity: 0.7;
+}
+
+/* ── WRAPPER PRINCIPAL ── */
+.page-wrapper {
+  position: relative;
+  z-index: 1;
+  padding-top: 64px;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 2rem 4rem;
+  position: relative;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--bordure), transparent);
+}
+
+.hero-kanji {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 4.5rem;
+  font-weight: 200;
+  color: var(--or-profond);
+  opacity: 0.5;
+  letter-spacing: 0.5em;
+  margin-bottom: 1rem;
+  animation: fadeDown 1.2s ease both;
+}
+
+.hero-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  font-weight: 400;
+  color: var(--or-pale);
+  letter-spacing: 0.15em;
+  line-height: 1.2;
+  animation: fadeDown 1.2s 0.2s ease both;
+}
+
+.hero-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--texte);
+  margin-top: 1.2rem;
+  letter-spacing: 0.1em;
+  animation: fadeDown 1.2s 0.4s ease both;
+}
+
+/* ── CONTENU ── */
+.content-wrapper {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem;
+}
+
+.content-wrapper p {
+  margin-bottom: 1.6rem;
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--texte-clair);
+  text-align: justify;
+  hyphens: auto;
+}
+
+.content-wrapper p:first-of-type::first-letter {
+  font-family: 'Cinzel', serif;
+  font-size: 3.5rem;
+  float: left;
+  line-height: 0.85;
+  margin: 0.1rem 0.5rem 0 0;
+  color: var(--or);
+}
+
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--or);
+  margin: 3rem 0 1.5rem;
+}
+
+/* ── CARTE CITATION ── */
+.quote-block {
+  border-left: 2px solid var(--or-profond);
+  padding: 1.2rem 2rem;
+  margin: 2.5rem 0;
+  background: rgba(200, 169, 110, 0.04);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--or-pale);
+}
+
+/* ── FOOTER ── */
+footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 3rem 2rem;
+  border-top: 1px solid var(--bordure);
+  background: rgba(10,8,5,0.8);
+}
+
+footer p {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  color: var(--or-profond);
+  text-transform: uppercase;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 1.4s 0.6s ease both;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  .nav-links { gap: 1.2rem; }
+  .nav-links a { font-size: 0.6rem; letter-spacing: 0.1em; }
+  .hero-kanji { font-size: 2.8rem; }
+}
